@@ -15,6 +15,8 @@ class StreamWatcherListener(tweepy.StreamListener):
 
     def on_status(self, status):
         try:
+            #Passing document saving off to Celery would
+            #probably be much more sane
             tweet_doc = TweetDoc(
                 author = status.author.screen_name,
                 tweet = status.text,
